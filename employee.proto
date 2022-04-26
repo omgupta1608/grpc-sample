@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package employeePackage;
+
+message Employee {
+    int32 id = 1;
+    string name = 2;
+    string designation = 3;
+    float salary = 4;
+}
+
+message Employees {
+    repeated Employee employees = 1;
+}
+
+message noParamas {}
+
+service EmployeeService {
+    rpc getEmployees(noParamas) returns (Employees);
+    rpc createEmployee(Employee) returns (Employee);
+    rpc getEmployeesStream(noParamas) returns (stream Employee);
+}
